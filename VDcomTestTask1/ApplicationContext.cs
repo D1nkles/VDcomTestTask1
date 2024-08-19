@@ -11,7 +11,6 @@ namespace VDcomTestTask1
 
         public ApplicationContext() 
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
