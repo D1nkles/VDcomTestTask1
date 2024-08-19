@@ -27,7 +27,6 @@ namespace VDcomTestTask1.Repositories
             using (var db = new ApplicationContext()) 
             {
                 var contractSums = db.Contracts
-                                   .Include(c => c.LegalEntity)
                                    .Where(c => c.LegalEntity.Country == countryName)
                                    .Select(c => c.ContractSum) 
                                    .ToList();

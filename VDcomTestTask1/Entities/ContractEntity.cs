@@ -12,7 +12,7 @@ namespace VDcomTestTask1.Entities
         public decimal ContractSum { get; set; }
         [MaxLength(35)]
         public string ContractStatus { get; set; }
-        public DateOnly ContractDate { get; set; }
+        public DateTime ContractDate { get; set; }
 
         public LegalEntity LegalEntity { get; set; }
         public IndividualEntity IndividualEntity { get; set; }
