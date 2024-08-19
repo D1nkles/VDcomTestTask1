@@ -15,8 +15,14 @@ namespace VDcomTestTask1
             {
                 Console.WriteLine(contractSum);
             }
-             
-            
+
+            contracts = repository.SelectContractByRussianLegal();
+
+            Console.WriteLine("Суммы всех заключенных договоров по каждому контрагенту из России:");
+            foreach (decimal contractSum in contracts) 
+            {
+                Console.WriteLine(contractSum);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using VDcomTestTask1.Entities;
 
 namespace VDcomTestTask1.Repositories
@@ -17,6 +18,21 @@ namespace VDcomTestTask1.Repositories
                                            .ToList();
                 
                 return currentYearContracts;
+            }
+        }
+
+        public List<decimal> SelectContractByRussianLegal() 
+        {
+            string countryName = "Россия";
+            using (var db = new ApplicationContext()) 
+            {
+                var contractSums = db.Contracts
+                                   .Include(c => c.LegalEntity)
+                                   .Where(c => c.LegalEntity.Country == countryName)
+                                   .Select(c => c.ContractSum) 
+                                   .ToList();
+                
+                return contractSums;
             }
         }
     }
