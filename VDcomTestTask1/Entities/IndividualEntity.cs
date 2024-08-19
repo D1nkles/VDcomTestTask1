@@ -23,5 +23,7 @@ namespace VDcomTestTask1.Entities
         public string? Email { get; set; }
         public long? PhoneNumber { get; set; }
         public DateOnly Birthday { get; set; }
+
+        public List<ContractEntity> Contracts { get; set; } = new List<ContractEntity>();
     }
 }

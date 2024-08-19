@@ -15,5 +15,7 @@ namespace VDcomTestTask1.Entities
         [MaxLength(256)]
         public string? Email { get; set; }
         public long? PhoneNumber { get; set; }
+
+        public List<ContractEntity> Contracts { get; set; } = new List<ContractEntity>();
     }
 }
