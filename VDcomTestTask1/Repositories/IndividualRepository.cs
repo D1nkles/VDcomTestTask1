@@ -13,7 +13,8 @@ namespace VDcomTestTask1.Repositories
             using (var db = new ApplicationContext())
             {
                 var emailList = db.Individuals
-                            .Join(db.Contracts, i => i.Id,
+                            .Join(db.Contracts,
+                            i => i.Id,
                             c => c.IndividualEntityId,
                             (i, c) =>
                             new

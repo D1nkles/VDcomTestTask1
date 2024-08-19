@@ -34,7 +34,10 @@ namespace VDcomTestTask1
             {
                 Console.WriteLine(email);
             }
+            Console.WriteLine();
 
+            int updatedCount = contractRepository.UpdateContractStatus();
+            Console.WriteLine("Кол-во измененных договоров: " + updatedCount);
             Console.WriteLine();
         }
     }

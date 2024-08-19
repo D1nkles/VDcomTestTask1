@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq.Expressions;
 using VDcomTestTask1.Entities;
 
@@ -32,6 +33,35 @@ namespace VDcomTestTask1.Repositories
                                    .ToList();
                 
                 return contractSums;
+            }
+        }
+
+        public int UpdateContractStatus() 
+        {
+            int ageCap = 60;
+
+            using (var db = new ApplicationContext()) 
+            {
+                string newStatus = "Расторгнут";
+                var selectedContracts = db.Contracts
+                                        .Where(c => c.IndividualEntity.Age >= ageCap
+                                        && (c.ContractStatus != newStatus
+                                        || c.ContractStatus != "Отменён"
+                                        || c.ContractStatus != "Выполнен"))
+                                        .ToList();
+
+                if (!selectedContracts.IsNullOrEmpty()) 
+                {
+                    foreach(ContractEntity contract in selectedContracts) 
+                    {
+                        contract.ContractStatus = newStatus;
+                    }
+
+                    db.SaveChanges();
+                    return selectedContracts.Count;
+                }
+
+                return selectedContracts.Count;
             }
         }
     }
