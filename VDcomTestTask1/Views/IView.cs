@@ -2,6 +2,6 @@
 {
     internal interface IView
     {
-        public void Show() { }
+        public void Show();
     }
 }
