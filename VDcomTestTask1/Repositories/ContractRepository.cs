@@ -1,58 +1,59 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Linq.Expressions;
+﻿using Microsoft.IdentityModel.Tokens;
 using VDcomTestTask1.Entities;
 
 namespace VDcomTestTask1.Repositories
 {
     internal class ContractRepository
     {
-        public List<decimal> SelectCurrentYearContract() 
+        public List<decimal> SelectCurrentYearContract()
         {
             string currentYear = DateTime.Now.Year.ToString();
 
-            using (var db = new ApplicationContext()) 
+            using (var db = new ApplicationContext())
             {
                 var currentYearContracts = db.Contracts
                                            .Where(c => c.ContractDate.ToString().Contains(currentYear))
                                            .Select(c => c.ContractSum)
                                            .ToList();
-                
+
                 return currentYearContracts;
             }
         }
 
-        public List<decimal> SelectContractByRussianLegal() 
+        public List<decimal> SelectContractByRussianLegal()
         {
             string countryName = "Россия";
-            using (var db = new ApplicationContext()) 
+            using (var db = new ApplicationContext())
             {
                 var contractSums = db.Contracts
                                    .Where(c => c.LegalEntity.Country == countryName)
-                                   .Select(c => c.ContractSum) 
+                                   .Select(c => c.ContractSum)
                                    .ToList();
-                
+
                 return contractSums;
             }
         }
 
-        public int UpdateContractStatus() 
+        public int UpdateContractStatus()
         {
             int ageCap = 60;
 
-            using (var db = new ApplicationContext()) 
+            using (var db = new ApplicationContext())
             {
                 string newStatus = "Расторгнут";
+                string canceledStatus = "Отменён";
+                string completedStatus = "Выполнен";
+
                 var selectedContracts = db.Contracts
                                         .Where(c => c.IndividualEntity.Age >= ageCap
                                         && (c.ContractStatus != newStatus
-                                        || c.ContractStatus != "Отменён"
-                                        || c.ContractStatus != "Выполнен"))
+                                        && c.ContractStatus != canceledStatus
+                                        && c.ContractStatus != completedStatus))
                                         .ToList();
 
-                if (!selectedContracts.IsNullOrEmpty()) 
+                if (!selectedContracts.IsNullOrEmpty())
                 {
-                    foreach(ContractEntity contract in selectedContracts) 
+                    foreach (ContractEntity contract in selectedContracts)
                     {
                         contract.ContractStatus = newStatus;
                     }

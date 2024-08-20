@@ -1,5 +1,4 @@
-﻿using VDcomTestTask1.Entities;
-using VDcomTestTask1.Repositories;
+﻿using VDcomTestTask1.Repositories;
 
 namespace VDcomTestTask1 
 {
@@ -39,6 +38,10 @@ namespace VDcomTestTask1
             int updatedCount = contractRepository.UpdateContractStatus();
             Console.WriteLine("Кол-во измененных договоров: " + updatedCount);
             Console.WriteLine();
+
+            var reportData = individualRepository.SelectIndividualReportData();
+            var reportBuilder = new ReportBuilder();
+            reportBuilder.BuildIndividualReport(reportData, "report");
         }
     }
 }

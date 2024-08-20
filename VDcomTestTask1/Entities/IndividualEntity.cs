@@ -12,7 +12,6 @@ namespace VDcomTestTask1.Entities
         [MaxLength(30)]
         public string? SecondName { get; set; }
         public string Gender { get; set; }
-        [Range(18, 100)]
         public int Age { get; set; }
         [MaxLength(100)]
         public string? Workplace { get; set; }
