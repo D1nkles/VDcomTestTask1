@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VDcomTestTask1.Repositories;
+﻿using VDcomTestTask1.Repositories;
 
 namespace VDcomTestTask1.Views
 {

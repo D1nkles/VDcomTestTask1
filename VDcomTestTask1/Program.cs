@@ -9,10 +9,6 @@ namespace VDcomTestTask1
             ContractRepository contractRepository = new ContractRepository();
             IndividualRepository individualRepository = new IndividualRepository();
 
-            
-
-            
-
             int updatedCount = contractRepository.UpdateContractStatus();
             Console.WriteLine("Кол-во измененных договоров: " + updatedCount);
             Console.WriteLine();
