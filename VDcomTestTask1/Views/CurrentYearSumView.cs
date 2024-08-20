@@ -9,6 +9,7 @@ namespace VDcomTestTask1.Views
         {
             this.contractRepository = contractRepository;
         }
+
         public void Show() 
         {
             int sumCounter = 0;
