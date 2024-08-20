@@ -9,16 +9,9 @@ namespace VDcomTestTask1
             ContractRepository contractRepository = new ContractRepository();
             IndividualRepository individualRepository = new IndividualRepository();
 
-            var contracts = contractRepository.SelectCurrentYearContract();
+            
 
-            Console.WriteLine("Суммы всех заключенных договоров за текущий год:");
-            foreach (decimal contractSum in contracts)
-            {
-                Console.WriteLine(contractSum);
-            }
-            Console.WriteLine();
-
-            contracts = contractRepository.SelectContractByRussianLegal();
+            var contracts = contractRepository.SelectContractByRussianLegal();
 
             Console.WriteLine("Суммы всех заключенных договоров по каждому контрагенту из России:");
             foreach (decimal contractSum in contracts) 
