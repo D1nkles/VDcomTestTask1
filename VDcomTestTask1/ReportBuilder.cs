@@ -5,6 +5,7 @@ namespace VDcomTestTask1
     internal class ReportBuilder
     {
         string fileFormat = ".json";
+        string space = "        ";
         string PATH = Directory.GetCurrentDirectory();
 
         public void BuildIndividualReport(List<IndividualReportForm> data, string fileName)
@@ -20,12 +21,12 @@ namespace VDcomTestTask1
             {
                 using (StreamWriter writer = new StreamWriter(fileStream))
                 {
-                    writer.WriteLine("Имя        Фамилия        Отчество        e-mail        Номер телефона        Дата рождения\n");
+                    writer.WriteLine($"Имя{space}Фамилия{space}Отчество{space}e-mail{space}Номер телефона{space}Дата рождения\n");
 
                     foreach (IndividualReportForm report in data)
                     {
-                        writer.WriteLine($"{report.FirstName}        {report.Surname}        {report.SecondName}        " +
-                                         $"{report.Email}        {report.PhoneNumber}        {report.Birthday} ");
+                        writer.WriteLine($"{report.FirstName}{space}{report.Surname}{space}{report.SecondName}{space}" +
+                                         $"{report.Email}{space}{report.PhoneNumber}{space}{report.Birthday}");
                     }
                 }
             }
