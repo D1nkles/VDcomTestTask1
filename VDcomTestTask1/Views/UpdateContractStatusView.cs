@@ -14,8 +14,7 @@ namespace VDcomTestTask1.Views
         {
             int updatedCount = contractRepository.UpdateContractStatus();
 
-            Console.WriteLine("Кол-во измененных договоров: " + updatedCount);
-            Console.WriteLine();
+            Console.WriteLine($"Кол-во измененных договоров: {updatedCount}\n");
         }
     }
 }

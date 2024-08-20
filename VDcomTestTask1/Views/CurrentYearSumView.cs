@@ -19,10 +19,8 @@ namespace VDcomTestTask1.Views
             
             foreach(decimal sum in contractSums) 
             {
-                Console.WriteLine($"{++sumCounter}. {sum}");
+                Console.WriteLine($"{++sumCounter}. {sum}\n");
             }
-
-            Console.WriteLine();
         }
     }
 }

@@ -19,10 +19,8 @@ namespace VDcomTestTask1.Views
 
             foreach (string email in individualEmails) 
             {
-                Console.WriteLine($"{++emailCounter}. {email}");
+                Console.WriteLine($"{++emailCounter}. {email}\n");
             }
-
-            Console.WriteLine();
         }
     }
 }
