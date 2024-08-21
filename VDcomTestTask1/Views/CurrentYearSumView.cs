@@ -1,4 +1,5 @@
-﻿using VDcomTestTask1.Repositories;
+﻿using Microsoft.IdentityModel.Tokens;
+using VDcomTestTask1.Repositories;
 
 namespace VDcomTestTask1.Views
 {
@@ -15,12 +16,17 @@ namespace VDcomTestTask1.Views
             int sumCounter = 0;
             var contractSums = contractRepository.SelectCurrentYearContract();
 
-            Console.WriteLine("\nСуммы всех заключенных договоров за текущий год:");
-            
-            foreach(decimal sum in contractSums) 
+            if (!contractSums.IsNullOrEmpty()) 
             {
-                Console.WriteLine($"{++sumCounter}. {sum}");
+                Console.WriteLine("\nСуммы всех заключенных договоров за текущий год:");
+
+                foreach (decimal sum in contractSums)
+                {
+                    Console.WriteLine($"{++sumCounter}. {sum}");
+                }
             }
+            else
+                Console.WriteLine("Сумм, довлетворяющих запросу не найдено.");
 
             Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться к выбору команд...");
             Console.ReadKey();

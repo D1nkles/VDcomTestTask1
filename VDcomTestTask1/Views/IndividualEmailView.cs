@@ -1,4 +1,5 @@
-﻿using VDcomTestTask1.Repositories;
+﻿using Microsoft.IdentityModel.Tokens;
+using VDcomTestTask1.Repositories;
 
 namespace VDcomTestTask1.Views
 {
@@ -15,12 +16,17 @@ namespace VDcomTestTask1.Views
             int emailCounter = 0;
             var individualEmails = individualRepository.SelectIndividualEmails();
 
-            Console.WriteLine("\nСписок e-mail уполномоченных лиц, заключивших договора за последние 30 дней, на сумму больше 40000:");
-
-            foreach (string email in individualEmails) 
+            if (!individualEmails.IsNullOrEmpty())
             {
-                Console.WriteLine($"{++emailCounter}. {email}");
+                Console.WriteLine("\nСписок e-mail уполномоченных лиц, заключивших договора за последние 30 дней, на сумму больше 40000:");
+
+                foreach (string email in individualEmails)
+                {
+                    Console.WriteLine($"{++emailCounter}. {email}");
+                }
             }
+            else
+                Console.WriteLine("e-mail, удовлетворяющих запросу не найдено.");
 
             Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться к выбору команд...");
             Console.ReadKey();
