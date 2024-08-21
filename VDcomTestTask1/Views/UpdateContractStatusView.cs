@@ -1,4 +1,5 @@
-﻿using VDcomTestTask1.Repositories;
+﻿using System.Threading.Channels;
+using VDcomTestTask1.Repositories;
 
 namespace VDcomTestTask1.Views
 {
@@ -14,7 +15,12 @@ namespace VDcomTestTask1.Views
         {
             int updatedCount = contractRepository.UpdateContractStatus();
 
-            Console.WriteLine($"Кол-во измененных договоров: {updatedCount}\n");
+            Console.WriteLine($"\nКол-во измененных договоров: {updatedCount}\n");
+
+            Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться к выбору команд...");
+            Console.ReadKey();
+            Console.Clear();
         }
+
     }
 }

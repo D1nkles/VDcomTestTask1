@@ -15,11 +15,15 @@ namespace VDcomTestTask1.Views
         {
             string fileName;
 
-            Console.Write("Введите название для файла отчета: ");
+            Console.Write("\nВведите название для файла отчета: ");
             fileName = Console.ReadLine();
             reportBuilder.BuildIndividualReport(individualRepository.SelectIndividualReportData(), fileName);
             
-            Console.WriteLine("Запрошенный файл должен появиться в директории приложения.\n");
+            Console.WriteLine("Отчет должен появиться в директории приложения.\n");
+
+            Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться к выбору команд...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }

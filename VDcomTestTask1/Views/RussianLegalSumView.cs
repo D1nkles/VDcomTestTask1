@@ -15,12 +15,16 @@ namespace VDcomTestTask1.Views
             int sumCounter = 0;
             var contractSums = contractRepository.SelectContractByRussianLegal();
             
-            Console.WriteLine("Суммы всех заключенных договоров по каждому контрагенту из России:");
+            Console.WriteLine("\nСуммы всех заключенных договоров по каждому контрагенту из России:");
             
             foreach (decimal sum in contractSums) 
             {
-                Console.WriteLine($"{++sumCounter}. {sum}\n");
+                Console.WriteLine($"{++sumCounter}. {sum}");
             }
+
+            Console.WriteLine("\nНажмите любую клавишу, чтобы вернуться к выбору команд...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
