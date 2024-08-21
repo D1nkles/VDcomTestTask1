@@ -45,6 +45,12 @@ namespace VDcomTestTask1.Views
                 case "0":
                     Environment.Exit(0);
                     break;
+
+                default:
+                    Console.WriteLine("Команда не найдена. Нажмите любую клавишу, чтобы попробовать снова...");
+                    Console.ReadKey();
+                    Console.Clear();
+                    break;
             }
                 
         }
